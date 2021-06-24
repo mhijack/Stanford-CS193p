@@ -28,28 +28,18 @@ struct MemoryGame<CardContent: Equatable> {
            !cards[index].isFaceUp,
            !cards[index].isMatched {
             if let indexOfOnlyCardFacingUp = indexOfOnlyCardFacingUp {
-                guard index != indexOfOnlyCardFacingUp else {
-                    return
-                }
-                
                 if cards[indexOfOnlyCardFacingUp].content == card.content {
-                    cards[index].isFaceUp = true
                     cards[indexOfOnlyCardFacingUp].isMatched = true
                     cards[index].isMatched = true
-                } else {
-                    /// Only face up temporarily. Eventually face both down.
-                    cards[index].isFaceUp.toggle()
-                    for i in cards.indices {
-                        if !cards[i].isMatched {
-                            cards[i].isFaceUp = false
-                        }
-                    }
                 }
                 self.indexOfOnlyCardFacingUp = nil
             } else {
+                for i in cards.indices {
+                    cards[i].isFaceUp = false
+                }
                 indexOfOnlyCardFacingUp = index
-                cards[index].isFaceUp.toggle()
             }
+            cards[index].isFaceUp.toggle()
         }
     }
     
@@ -63,7 +53,7 @@ struct MemoryGame<CardContent: Equatable> {
     }
     
     init(numberOfPairsOfCards: Int, createCardContent: ((Int) -> CardContent)) {
-        cards = Array<Card>()
+        cards = []
         for index in 0..<numberOfPairsOfCards {
             let content = createCardContent(index)
             cards.append(Card(id: UUID(), isFaceUp: false, isMatched: false, content: content))

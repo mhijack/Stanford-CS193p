@@ -9,31 +9,41 @@ import SwiftUI
 
 struct CardView: View {
     
-    private var shape = RoundedRectangle(cornerRadius: 20)
+    typealias Card = MemoryGame<String>.Card
     
-    public var content: MemoryGame<String>.Card
+    private var shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
+    
+    public var content: Card
     private var isFaceUp: Bool { return content.isFaceUp }
     
-    @ViewBuilder
     var body: some View {
-        ZStack(alignment: .center) {
-            shape
-                .fill()
-                .foregroundColor(isFaceUp ? .white : .red)
-                .zIndex(isFaceUp ? 0 : 3)
-            
-            shape
-                .strokeBorder(lineWidth: 3)
-                .foregroundColor(.red)
-            
-            Text(content.content)
-                .zIndex(isFaceUp ? 3 : 0)
-                .font(.largeTitle)
+        GeometryReader { geometry in
+            ZStack(alignment: .center) {
+                if isFaceUp {
+                    shape.fill().foregroundColor(.white)
+                    shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
+                    Text(content.content).font(font(in: geometry.size))
+                } else if content.isMatched {
+                    shape.opacity(0)
+                } else {
+                    shape.fill()
+                }
+            }
         }
     }
     
-    init(_ content: MemoryGame<String>.Card) {
+    init(_ content: Card) {
         self.content = content
+    }
+    
+    private struct DrawingConstants {
+        static let cornerRadius: CGFloat = 20
+        static let lineWidth: CGFloat = 3
+        static let fontScale: CGFloat = 0.74
+    }
+    
+    private func font(in size: CGSize) -> Font {
+        Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale)
     }
     
 }

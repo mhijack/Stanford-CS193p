@@ -14,9 +14,9 @@
             filePath = "Stanford-CS193p/Views/Game/MemoryGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "init(numberOfPairsOfCards:createCardContent:)"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "index(of:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

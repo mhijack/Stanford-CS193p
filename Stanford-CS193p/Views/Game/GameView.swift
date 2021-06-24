@@ -22,26 +22,21 @@ struct GameView: View {
                 .font(.system(size: 30))
             
             ScrollView {
-                LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()], alignment: .center, spacing: nil, pinnedViews: [], content: {
-                    ForEach(viewModel.cards, id: \.id) { card in
-                        CardView(card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                viewModel.choose(card)
-                            }
-                    }
-                })
-                .animation(nil)
+                GeometryReader { geometry in
+                    LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()], alignment: .center, spacing: nil, pinnedViews: [], content: {
+                        ForEach(viewModel.cards, id: \.id) { card in
+                            CardView(card)
+                                .aspectRatio(2/3, contentMode: .fit)
+                                .onTapGesture {
+                                    viewModel.choose(card)
+                                }
+                        }
+                    })
+                    .animation(nil)
+                }
             }
+            .foregroundColor(.red)
             .padding()
-            
-            Spacer()
-            
-            HStack(alignment: .center) {
-                vehicleButton
-                foodsButton
-                sportsButton
-            }
         }
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
     }
@@ -63,6 +58,7 @@ extension GameView {
         self.data = data
     }
     
+    @ViewBuilder
     private var vehicleButton: some View {
         Button(action: {
             setTheme(.vehicle)
@@ -77,6 +73,7 @@ extension GameView {
         .frame(maxWidth: .infinity)
     }
     
+    @ViewBuilder
     private var foodsButton: some View {
         Button(action: {
             setTheme(.food)
@@ -91,6 +88,7 @@ extension GameView {
         .frame(maxWidth: .infinity)
     }
     
+    @ViewBuilder
     private var sportsButton: some View {
         Button(action: {
             setTheme(.sport)
