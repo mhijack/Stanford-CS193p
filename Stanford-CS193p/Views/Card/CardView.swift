@@ -11,7 +11,7 @@ struct CardView: View {
     
     private var shape = RoundedRectangle(cornerRadius: 20)
     
-    public var content: String
+    public var content: MemoryGame<String>.Card
     @State var isFaceUp: Bool = true
     
     var body: some View {
@@ -25,7 +25,7 @@ struct CardView: View {
                 .strokeBorder(lineWidth: 3)
                 .foregroundColor(.red)
             
-            Text(content)
+            Text(content.content)
                 .zIndex(isFaceUp ? 3 : 0)
                 .font(.largeTitle)
         }
@@ -34,7 +34,7 @@ struct CardView: View {
         }
     }
     
-    init(_ content: String) {
+    init(_ content: MemoryGame<String>.Card) {
         self.content = content
     }
     
@@ -43,11 +43,11 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CardView("👆")
+            CardView(MemoryGame<String>.Card(id: UUID(), isFaceUp: true, isMatched: false, content: "👆"))
                 .previewDisplayName("Light")
                 .preferredColorScheme(.light)
             
-            CardView("👆")
+            CardView(MemoryGame<String>.Card(id: UUID(), isFaceUp: true, isMatched: false, content: "👆"))
                 .previewDisplayName("Dark")
                 .preferredColorScheme(.dark)
         }
