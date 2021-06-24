@@ -22,12 +22,16 @@ struct GameView: View {
                 .font(.system(size: 30))
             
             ScrollView {
-                LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], alignment: .center, spacing: nil, pinnedViews: [], content: {
-                    ForEach(viewModel.cards, id: \.id) { item in
-                        CardView(item)
+                LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()], alignment: .center, spacing: nil, pinnedViews: [], content: {
+                    ForEach(viewModel.cards, id: \.id) { card in
+                        CardView(card)
                             .aspectRatio(2/3, contentMode: .fit)
+                            .onTapGesture {
+                                viewModel.choose(card)
+                            }
                     }
                 })
+                .animation(nil)
             }
             .padding()
             

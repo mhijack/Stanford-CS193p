@@ -12,14 +12,21 @@ class EmojiMemoryGame: ObservableObject {
     static let emojis = foodsEmojis
     
     static func createMemoryGame() -> MemoryGame<String> {
-        return MemoryGame<String>(numberOfPairsOfCards: 4) { index in
+        return MemoryGame<String>(numberOfPairsOfCards: 8) { index in
             return EmojiMemoryGame.emojis[index]
         }
     }
     
-    private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
     public var cards: [MemoryGame<String>.Card] {
         return model.cards
     }
+    
+    // MARK: - Actions
+    
+    public func choose(_ card: MemoryGame<String>.Card) {
+        model.choose(card)
+    }
+    
 }

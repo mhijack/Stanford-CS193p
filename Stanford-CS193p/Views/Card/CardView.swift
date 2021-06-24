@@ -12,8 +12,9 @@ struct CardView: View {
     private var shape = RoundedRectangle(cornerRadius: 20)
     
     public var content: MemoryGame<String>.Card
-    @State var isFaceUp: Bool = true
+    private var isFaceUp: Bool { return content.isFaceUp }
     
+    @ViewBuilder
     var body: some View {
         ZStack(alignment: .center) {
             shape
@@ -28,9 +29,6 @@ struct CardView: View {
             Text(content.content)
                 .zIndex(isFaceUp ? 3 : 0)
                 .font(.largeTitle)
-        }
-        .onTapGesture {
-            isFaceUp.toggle()
         }
     }
     
