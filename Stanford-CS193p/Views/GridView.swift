@@ -13,7 +13,7 @@ struct GridView: View {
     public var emojiCount: Int
     
     var body: some View {
-        VStack {
+        ScrollView {
             LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()], alignment: .center, spacing: nil, pinnedViews: [], content: {
                 ForEach(data[0..<emojiCount], id: \.self) { item in
                     CardView(item)

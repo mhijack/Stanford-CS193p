@@ -22,7 +22,7 @@ struct CardView: View {
                 .zIndex(isFaceUp ? 0 : 3)
             
             shape
-                .stroke(lineWidth: 3)
+                .strokeBorder(lineWidth: 3)
                 .foregroundColor(.red)
             
             Text(content)
