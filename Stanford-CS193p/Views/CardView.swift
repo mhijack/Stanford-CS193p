@@ -8,19 +8,48 @@
 import SwiftUI
 
 struct CardView: View {
+    
+    private var shape = RoundedRectangle(cornerRadius: 20)
+    
+    public var content: String
+    @State var isFaceUp: Bool = true
+    
     var body: some View {
         ZStack(alignment: .center) {
-            RoundedRectangle(cornerRadius: 20)
+            shape
+                .fill()
+                .foregroundColor(isFaceUp ? .white : .red)
+                .zIndex(isFaceUp ? 0 : 3)
+            
+            shape
                 .stroke(lineWidth: 3)
                 .foregroundColor(.red)
             
-            Image(systemName: "folder.fill.badge.plus")
+            Text(content)
+                .zIndex(isFaceUp ? 3 : 0)
+                .font(.largeTitle)
+        }
+        .onTapGesture {
+            isFaceUp.toggle()
         }
     }
+    
+    init(_ content: String) {
+        self.content = content
+    }
+    
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView()
+        Group {
+            CardView("👆")
+                .previewDisplayName("Light")
+                .preferredColorScheme(.light)
+            
+            CardView("👆")
+                .previewDisplayName("Dark")
+                .preferredColorScheme(.dark)
+        }
     }
 }

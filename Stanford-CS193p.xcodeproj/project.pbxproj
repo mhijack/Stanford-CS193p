@@ -18,6 +18,7 @@
 		3B44EAD9268457AF0065C21C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EAD8268457AF0065C21C /* GameView.swift */; };
 		3B44EADB26845D220065C21C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EADA26845D220065C21C /* CardView.swift */; };
 		3B44EADD26845D7B0065C21C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EADC26845D7B0065C21C /* GridView.swift */; };
+		438DEC9A2684F3E600AF9476 /* NSObject+emojiString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438DEC992684F3E600AF9476 /* NSObject+emojiString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		3B44EAD8268457AF0065C21C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		3B44EADA26845D220065C21C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		3B44EADC26845D7B0065C21C /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		438DEC992684F3E600AF9476 /* NSObject+emojiString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+emojiString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		3B44EAA5268454650065C21C /* Stanford-CS193p */ = {
 			isa = PBXGroup;
 			children = (
+				438DEC982684F3D800AF9476 /* Helpers */,
 				3B44EAD62684575A0065C21C /* Views */,
 				3B44EAA6268454650065C21C /* Stanford_CS193pApp.swift */,
 				3B44EAAA268454670065C21C /* Assets.xcassets */,
@@ -151,6 +154,14 @@
 				3B44EADA26845D220065C21C /* CardView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		438DEC982684F3D800AF9476 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				438DEC992684F3E600AF9476 /* NSObject+emojiString.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +296,7 @@
 				3B44EAB0268454670065C21C /* Persistence.swift in Sources */,
 				3B44EAA9268454650065C21C /* ContentView.swift in Sources */,
 				3B44EAA7268454650065C21C /* Stanford_CS193pApp.swift in Sources */,
+				438DEC9A2684F3E600AF9476 /* NSObject+emojiString.swift in Sources */,
 				3B44EADD26845D7B0065C21C /* GridView.swift in Sources */,
 				3B44EAB3268454670065C21C /* Stanford_CS193p.xcdatamodeld in Sources */,
 				3B44EADB26845D220065C21C /* CardView.swift in Sources */,

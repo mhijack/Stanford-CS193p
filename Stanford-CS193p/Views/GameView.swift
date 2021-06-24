@@ -7,73 +7,104 @@
 
 import SwiftUI
 
+let emojis = ["🥖", "🍔", "🍣", "🍱", "🍿", "🍜", "🍥", "🍤", "🦀", "🐖", "🐠", "🌶", "🧄", "🍓", "🥝", "🥑"]
+
 struct GameView: View {
+    
+    @AppStorage("iconSize") var iconSize = 40.0
+    
+    @State var data = emojis
+    @State var emojiCount: Int = 4
+    
     var body: some View {
         VStack {
-            Text("Memorize!")
+            Text("Memorize")
                 .font(.system(size: 30))
             
-            GridView()
+            GridView(data: data, emojiCount: emojiCount)
+            
+            Spacer()
             
             HStack(alignment: .center) {
-                Button(action: {
-                    didTapVehicle()
-                }, label: {
-                    VStack {
-                        Image(systemName: "car")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50, height: 50, alignment: .center)
-                        Text("Vehicles")
-                    }
-                })
-                .frame(maxWidth: .infinity)
+                minusButton
                 
-                Button(action: {
-                    didTapTheme2()
-                }, label: {
-                    VStack {
-                        Image(systemName: "questionmark.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50, height: 50, alignment: .center)
-                        Text("Theme 2")
-                    }
-                })
-                .frame(maxWidth: .infinity)
+                shuffleButton
                 
-                Button(action: {
-                    didTapTheme3()
-                }, label: {
-                    VStack {
-                        Image(systemName: "questionmark.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50, height: 50, alignment: .center)
-                        Text("Theme 3")
-                    }
-                })
-                .frame(maxWidth: .infinity)
+                addButton
             }
         }
         .padding()
     }
     
-    private func didTapVehicle() {
+    var addButton: some View {
+        Button(action: {
+            add()
+        }, label: {
+            VStack {
+                Image(systemName: "plus.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: CGFloat(iconSize), height: CGFloat(iconSize), alignment: .center)
+            }
+        })
+        .frame(maxWidth: .infinity)
+        .disabled(emojiCount >= emojis.count)
+    }
+    
+    var shuffleButton: some View {
+        Button(action: {
+            shuffle()
+        }, label: {
+            VStack {
+                Text("Shuffle")
+                    .font(.headline)
+            }
+        })
+        .frame(maxWidth: .infinity)
+    }
+    
+    var minusButton: some View {
+        Button(action: {
+            minus()
+        }, label: {
+            VStack {
+                Image(systemName: "minus.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: CGFloat(iconSize), height: CGFloat(iconSize), alignment: .center)
+            }
+        })
+        .disabled(emojiCount <= 1)
+        .frame(maxWidth: .infinity)
+    }
+    
+    private func add() {
+        guard emojiCount <= emojis.count - 1 else {
+            return
+        }
+        emojiCount += 1
+    }
+    
+    private func shuffle() {
         
     }
     
-    private func didTapTheme2() {
-        
-    }
-    
-    private func didTapTheme3() {
-        
+    private func minus() {
+        guard emojiCount >= 1 else {
+            return
+        }
+        emojiCount -= 1
     }
 }
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView()
+        Group {
+            GameView()
+                .preferredColorScheme(.light)
+            
+            GameView()
+                .preferredColorScheme(.dark)
+        }
     }
 }
