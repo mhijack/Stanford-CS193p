@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     
-    @StateObject var viewModel: EmojiMemoryGame
+    @StateObject var game: EmojiMemoryGame
     
     @AppStorage("iconSize") var iconSize = 35.0
     
@@ -17,28 +17,15 @@ struct GameView: View {
     @State var emojiCount: Int = 16
     
     var body: some View {
-        VStack {
-            Text("Memorize")
-                .font(.system(size: 30))
-            
-            ScrollView {
-                GeometryReader { geometry in
-                    LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()], alignment: .center, spacing: nil, pinnedViews: [], content: {
-                        ForEach(viewModel.cards, id: \.id) { card in
-                            CardView(card)
-                                .aspectRatio(2/3, contentMode: .fit)
-                                .onTapGesture {
-                                    viewModel.choose(card)
-                                }
-                        }
-                    })
-                    .animation(nil)
+        AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
+            CardView(card)
+                .onTapGesture {
+                    game.choose(card)
                 }
-            }
-            .foregroundColor(.red)
-            .padding()
+                .padding(5)
         }
-        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+        .foregroundColor(.red)
+        .padding(.horizontal)
     }
     
 }
@@ -108,10 +95,11 @@ extension GameView {
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            GameView(viewModel: EmojiMemoryGame())
+            GameView(game: EmojiMemoryGame())
                 .preferredColorScheme(.light)
+                .previewDevice("iPhone SE (2nd generation")
             
-            GameView(viewModel: EmojiMemoryGame())
+            GameView(game: EmojiMemoryGame())
                 .preferredColorScheme(.dark)
         }
     }

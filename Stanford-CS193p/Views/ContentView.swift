@@ -19,7 +19,7 @@ struct ContentView: View {
     let game = EmojiMemoryGame()
 
     var body: some View {
-        GameView(viewModel: game)
+        GameView(game: game)
         
 //        List {
 //            ForEach(items) { item in

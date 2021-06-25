@@ -21,6 +21,7 @@
 		43054EDC26850A3400753498 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43054EDB26850A3400753498 /* Emojis.swift */; };
 		43054EE526851A7E00753498 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43054EE426851A7E00753498 /* MemoryGame.swift */; };
 		43054EE726851B2900753498 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43054EE626851B2900753498 /* EmojiMemoryGame.swift */; };
+		43054EEB26863A6C00753498 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43054EEA26863A6C00753498 /* AspectVGrid.swift */; };
 		438DEC9A2684F3E600AF9476 /* NSObject+emojiString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438DEC992684F3E600AF9476 /* NSObject+emojiString.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		43054EDB26850A3400753498 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		43054EE426851A7E00753498 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		43054EE626851B2900753498 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
+		43054EEA26863A6C00753498 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		438DEC992684F3E600AF9476 /* NSObject+emojiString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+emojiString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,6 +188,7 @@
 				3B44EAD8268457AF0065C21C /* GameView.swift */,
 				43054EE426851A7E00753498 /* MemoryGame.swift */,
 				43054EE626851B2900753498 /* EmojiMemoryGame.swift */,
+				43054EEA26863A6C00753498 /* AspectVGrid.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				3B44EAA7268454650065C21C /* Stanford_CS193pApp.swift in Sources */,
 				438DEC9A2684F3E600AF9476 /* NSObject+emojiString.swift in Sources */,
 				3B44EAB3268454670065C21C /* Stanford_CS193p.xcdatamodeld in Sources */,
+				43054EEB26863A6C00753498 /* AspectVGrid.swift in Sources */,
 				3B44EADB26845D220065C21C /* CardView.swift in Sources */,
 				3B44EAD9268457AF0065C21C /* GameView.swift in Sources */,
 				43054EE726851B2900753498 /* EmojiMemoryGame.swift in Sources */,

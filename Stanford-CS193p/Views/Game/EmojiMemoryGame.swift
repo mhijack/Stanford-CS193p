@@ -15,7 +15,7 @@ class EmojiMemoryGame: ObservableObject {
     static let emojis = foodsEmojis
     
     static func createMemoryGame() -> Game {
-        return Game(numberOfPairsOfCards: 8) { index in
+        return Game(numberOfPairsOfCards: 6) { index in
             return EmojiMemoryGame.emojis[index]
         }
     }
